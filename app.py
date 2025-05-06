@@ -333,7 +333,26 @@ print(product.price)  # Accessing the price
 product.price = 150  # Using setter
 print(product.price)
 
-del product.price  # Using deleter
+del product.price  # Using deleted
+
+
+# 19. callable() and __call__()
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+
+    def __call__(self, number):
+        return number * self.factor
+
+# Example usage:
+multiplier = Multiplier(5)
+
+# Check if the object is callable
+print(callable(multiplier))  # Output: True
+
+# Using the object as a function
+result = multiplier(10)  # Equivalent to multiplier.__call__(10)
+print(f"Result: {result}")
 
 
 
