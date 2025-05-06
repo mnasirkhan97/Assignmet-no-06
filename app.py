@@ -270,6 +270,38 @@ class D(B, C):
 
 # Example usage:
 d = D()
+
+
+
+# 16. Function Decorators
+def log_function_call(func):
+    def wrapper():
+        print("Function is being called")
+        func()
+    return wrapper
+
+@log_function_call
+def say_hello():
+    print("Hello!")
+
+# Example usage:
+say_hello()
+
+
+# 17. Class Decorators
+def add_greeting(cls):
+    cls.greet = lambda self: "Hello from Decorator!"  # Adding a greet method to the class
+    return cls
+
+@add_greeting
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+# Example usage:
+person = Person("John")
+print(person.greet())  # Output: Hello from Decorator!
+
 d.show()  # This will call the method from class B due to MRO
 
 
