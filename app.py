@@ -142,5 +142,40 @@ teacher = Teacher("Sara", "Mathematics")
 teacher.display()
 
 
+# 9. Abstract Classes and Methods (using the abc module)
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+# Example usage:
+rect = Rectangle(5, 4)
+print("Area of rectangle:", rect.area())
+
+
+# 10. Instance Methods
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+
+    def bark(self):
+        print(f"{self.name} says: Woof! Woof!")
+
+# Example usage:
+dog1 = Dog("Buddy", "Labrador")
+dog1.bark()
+
+
 
 
