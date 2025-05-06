@@ -80,3 +80,67 @@ class MathUtils:
 result = MathUtils.add(5, 7)
 print(f"Sum: {result}")
 
+# 6. Constructors and Destructors
+class Logger:
+    def __init__(self):
+        print("Logger object has been created.")
+
+    def __del__(self):
+        print("Logger object is being destroyed.")
+
+# Example usage:
+log = Logger()
+del log  # Manually destroying to show the destructor message immediately
+
+
+# 7. Access Modifiers: Public, Protected, and Private
+class Employee:
+    def __init__(self, name, salary, ssn):
+        self.name = name            # Public
+        self._salary = salary       # Protected
+        self.__ssn = ssn            # Private
+
+    def show_details(self):
+        print(f"Name: {self.name}")
+        print(f"Salary: {self._salary}")
+        print(f"SSN: {self.__ssn}")
+
+# Example usage:
+emp = Employee("John", 50000, "123-45-6789")
+
+# Accessing a public variable
+print("Public:", emp.name)
+
+# Accessing protected variable (allowed but not recommended)
+print("Protected:", emp._salary)
+
+# Accessing a private variable directly will raise AttributeError
+try:
+    print("Private:", emp.__ssn)
+except AttributeError:
+    print("Private: Cannot access directly")
+
+# Accessing private using name mangling (not recommended)
+print("Private (via name mangling):", emp._Employee__ssn)
+
+
+# 8. The super() Function
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)  # Call base class constructor
+        self.subject = subject
+
+    def display(self):
+        print(f"Name: {self.name}, Subject: {self.subject}")
+
+# Example usage:
+teacher = Teacher("Sara", "Mathematics")
+teacher.display()
+
+
+
+
