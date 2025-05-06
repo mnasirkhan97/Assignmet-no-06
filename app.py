@@ -354,5 +354,24 @@ print(callable(multiplier))  # Output: True
 result = multiplier(10)  # Equivalent to multiplier.__call__(10)
 print(f"Result: {result}")
 
+# 20. Creating a Custom Exception
+class InvalidAgeError(Exception):
+    def __init__(self, message="Age must be 18 or older"):
+        self.message = message
+        super().__init__(self.message)
+
+def check_age(age):
+    if age < 18:
+        raise InvalidAgeError("You must be at least 18 years old.")
+    else:
+        print("Age is valid!")
+
+# Example usage:
+try:
+    check_age(16)
+except InvalidAgeError as e:
+    print(f"Error: {e}")
+
+
 
 
