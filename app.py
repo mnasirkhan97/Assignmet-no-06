@@ -305,5 +305,35 @@ print(person.greet())  # Output: Hello from Decorator!
 d.show()  # This will call the method from class B due to MRO
 
 
+# 18. Property Decorators: @property, @setter, and @deleter 
+class Product:
+    def __init__(self, price):
+        self._price = price  # Private attribute
+
+    @property
+    def price(self):
+        return self._price  # Getter for price
+
+    @price.setter
+    def price(self, value):
+        if value < 0:
+            print("Price cannot be negative!")
+        else:
+            self._price = value  # Setter for price
+
+    @price.deleter
+    def price(self):
+        print("Deleting price")
+        del self._price  # Deleter for price
+
+# Example usage:
+product = Product(100)
+print(product.price)  # Accessing the price
+
+product.price = 150  # Using setter
+print(product.price)
+
+del product.price  # Using deleter
+
 
 
