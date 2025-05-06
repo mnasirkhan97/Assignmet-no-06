@@ -176,6 +176,102 @@ class Dog:
 dog1 = Dog("Buddy", "Labrador")
 dog1.bark()
 
+# 11. Class Methods
+class Book:
+    total_books = 0  # Class variable
+
+    def __init__(self, title):
+        self.title = title
+        Book.total_books += 1  # Increment the total count when a new book is added
+
+    @classmethod
+    def increment_book_count(cls):
+        cls.total_books += 1
+
+    @classmethod
+    def show_book_count(cls):
+        print(f"Total books: {cls.total_books}")
+
+# Example usage:
+book1 = Book("Python Programming")
+book2 = Book("Data Science with Python")
+
+Book.show_book_count()  # Display total books
+
+Book.increment_book_count()  # Increment the count
+Book.show_book_count()
+
+
+# 12. Static Methods
+class TemperatureConverter:
+    @staticmethod
+    def celsius_to_fahrenheit(c):
+        return (c * 9/5) + 32
+
+# Example usage:
+celsius = 25
+fahrenheit = TemperatureConverter.celsius_to_fahrenheit(celsius)
+print(f"{celsius}°C is {fahrenheit}°F")
+
+
+# 13. Composition
+class Engine:
+    def start_engine(self):
+        print("Engine is starting...")
+
+class Car:
+    def __init__(self, engine):
+        self.engine = engine  # Composition: Car has an Engine
+
+    def start(self):
+        print("Car is starting...")
+        self.engine.start_engine()  # Access Engine's method via Car
+
+# Example usage:
+engine = Engine()
+car = Car(engine)
+car.start()
+
+
+# 14. Aggregation
+class Department:
+    def __init__(self, name):
+        self.name = name
+
+class Employee:
+    def __init__(self, name, department):
+        self.name = name
+        self.department = department  # Aggregation: Employee has a Department
+
+    def show_details(self):
+        print(f"Employee: {self.name}, Department: {self.department.name}")
+
+# Example usage:
+dept = Department("Engineering")
+emp = Employee("Alice", dept)
+emp.show_details()
+
+
+# 15. Method Resolution Order (MRO) and Diamond Inheritance
+class A:
+    def show(self):
+        print("A's show method")
+
+class B(A):
+    def show(self):
+        print("B's show method")
+
+class C(A):
+    def show(self):
+        print("C's show method")
+
+class D(B, C):
+    pass
+
+# Example usage:
+d = D()
+d.show()  # This will call the method from class B due to MRO
+
 
 
 
